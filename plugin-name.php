@@ -4,6 +4,8 @@
  * Description: Plugin Description
  * Version: 1.0
  * Licence: MIT
+ * Text Domain: plugin-name
+ * Domain Path: /languages
  *  */
 
  /**
@@ -15,6 +17,10 @@
   * 5) run `composer install` to dump autoload files
   */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 $plugin_root_name = "PLUGIN_NAME";
 defined("${plugin_root_name}_DIR") || define("${plugin_root_name}_DIR", trailingslashit( plugin_dir_path(__FILE__)  ) );
@@ -35,6 +41,17 @@ class PLUGIN_NAME_MAIN{
 
     public function init(  ) {
 
+        if(wp_doing_ajax()) {
+            // ajax service (AJAX Request)
+        }  else {
+            if(is_admin(  )) {                
+                // admin service (Backend)
+                \Devdyna\PluginName\controller\admin\Admin::instance()->init();
+            } else {
+                // publics service (Frontend)
+                \Devdyna\PluginName\controller\publics\Publics::instance()->init();
+            }
+        }
     }
 
     public function activate() {
