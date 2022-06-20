@@ -1,0 +1,18 @@
+{
+    "name": "devdyna/plugin-name",
+    "type": "plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Devdyna\\PluginName\\": "application/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dev",
+            "email": "info@dynamicdreamz.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
